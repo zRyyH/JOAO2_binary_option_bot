@@ -13,5 +13,4 @@ RUN apt-get update
 # Instala as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe as portas para acesso externo
-CMD python3 ./app.py
+CMD ["python", "app.py"]

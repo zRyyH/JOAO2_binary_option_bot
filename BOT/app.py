@@ -1,5 +1,6 @@
 from telegram.ext import Application, MessageHandler, filters
 from dotenv import load_dotenv
+import traceback
 import requests
 import os
 
@@ -19,12 +20,16 @@ async def receber_mensagem(update, context):
         )
 
         if r.status_code == 200:
-            await update.message.reply_text(f"id: {binaryId} adicionado ao banco!")
+            log = f"id: {binaryId} adicionado ao banco!"
+            await update.message.reply_text(log)
         else:
-            await update.message.reply_text(f"id: {binaryId} erro ao adicionar ao banco!")
+            log = f"id: {binaryId} erro ao adicionar ao banco!"
+            await update.message.reply_text(log)
+        
+        print(log, r.status_code)
 
     except:
-        pass
+        traceback.print_exc()
 
 def main():
     app = Application.builder().token(TOKEN).build()
@@ -32,4 +37,5 @@ def main():
     app.run_polling()
 
 if __name__ == "__main__":
+    print('Inicializando BOT...')
     main()
