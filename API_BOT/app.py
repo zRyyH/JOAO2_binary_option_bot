@@ -1,17 +1,18 @@
-from services import criar_user, obter_users, obter_user
+from services import criar_event, obter_events, obter_event
 from flask import Flask, request, jsonify
 
 
 app = Flask(__name__)
 
 
-@app.route("/api/user", methods=["POST"])
-def user_post():
-    # Obtendo json
-    dados = request.get_json()
+@app.route("/pri_registro", methods=["GET"])
+def pri_registro():
+    trader_id = request.args.get("trader_id")
+    influencer = request.args.get("postback_name")
 
-    # Criar account
-    response = criar_user(**dados)
+    response = criar_event(
+        trader_id=trader_id, influencer=influencer, event_type="PRI_REGISTRO"
+    )
 
     if response["status"] == True:
         return jsonify({"mensagem": "Usuario criado com sucesso!"}), 200
@@ -19,10 +20,14 @@ def user_post():
         return jsonify({"mensagem": response["error"]}), 500
 
 
-@app.route("/api/user/<int:item_id>/<string:influencer>", methods=["GET"])
-def user_get_by_id(item_id, influencer):
-    # Obter accounts
-    response = obter_user(item_id, influencer)
+@app.route("/registro", methods=["GET"])
+def registro():
+    trader_id = request.args.get("trader_id")
+    influencer = request.args.get("postback_name")
+
+    response = criar_event(
+        trader_id=trader_id, influencer=influencer, event_type="REGISTRO"
+    )
 
     if response["status"] == True:
         return jsonify({"mensagem": response["result"]}), 200
@@ -30,10 +35,40 @@ def user_get_by_id(item_id, influencer):
         return jsonify({"mensagem": response["error"]}), 500
 
 
-@app.route("/api/users", methods=["GET"])
-def user_get():
-    # Obter accounts
-    response = obter_users()
+@app.route("/deposito", methods=["GET"])
+def deposito():
+    trader_id = request.args.get("trader_id")
+    influencer = request.args.get("postback_name")
+
+    response = criar_event(
+        trader_id=trader_id, influencer=influencer, event_type="DEPOSITO"
+    )
+
+    if response["status"] == True:
+        return jsonify({"mensagem": response["result"]}), 200
+    else:
+        return jsonify({"mensagem": response["error"]}), 500
+
+
+@app.route("/events", methods=["GET"])
+def events():
+    response = obter_events()
+
+    if response["status"] == True:
+        return jsonify({"mensagem": response["result"]}), 200
+    else:
+        return jsonify({"mensagem": response["error"]}), 500
+
+
+@app.route("/event", methods=["GET"])
+def event():
+    trader_id = request.args.get("trader_id")
+    influencer = request.args.get("postback_name")
+    event_type = request.args.get("event_type")
+
+    response = obter_event(
+        trader_id=trader_id, influencer=influencer, event_type=event_type
+    )
 
     if response["status"] == True:
         return jsonify({"mensagem": response["result"]}), 200
@@ -42,4 +77,4 @@ def user_get():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=7000)
