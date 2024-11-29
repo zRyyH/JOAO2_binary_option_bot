@@ -15,7 +15,7 @@ def pri_registro():
     )
 
     if response["status"] == True:
-        return jsonify({"mensagem": "Usuario criado com sucesso!"}), 200
+        return jsonify({"mensagem": response["result"]}), 200
     else:
         return jsonify({"mensagem": response["error"]}), 500
 
