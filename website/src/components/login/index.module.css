@@ -54,6 +54,11 @@
     border-radius: 10px;
     background-color: #28a745;
     border: none;
+    transition: 0.25s;
+}
+
+.loginButton:hover {
+    background-color: #0e6322;
 }
 
 .loginButtonText {

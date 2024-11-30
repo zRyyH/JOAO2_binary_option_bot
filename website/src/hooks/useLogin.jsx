@@ -21,6 +21,7 @@ function useLogin() {
             setIsAuthenticated(response)
         } else {
             setIsAuthenticated(response)
+            alert('Trader ID invalido !')
         }
     }
 

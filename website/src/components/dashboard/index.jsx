@@ -6,6 +6,8 @@ import cetaDown from "../../assets/seta-para-baixo.png"
 import CountdownTimer from "../searchButton";
 
 export default function Dashboard() {
+    const block_time = Number.parseFloat(process.env.REACT_APP_BLOCK_TIME)
+
     const {
         period,
         forex,
@@ -71,7 +73,7 @@ export default function Dashboard() {
             <div className={styles.splitContainer} />
 
             <div className={styles.searchOption} >
-                <CountdownTimer initialTime={10} seekOpportunity={seekOpportunity} />
+                <CountdownTimer initialTime={block_time} seekOpportunity={seekOpportunity} />
             </div>
 
             <div className={styles.splitContainer} />

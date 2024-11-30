@@ -19,7 +19,7 @@ export default function useDashboard() {
         "AUD/CAD",
         "AUD/USD"
     ];
-
+    
     function getNextRoundedTime() {
         const now = new Date();
         let minutes = now.getMinutes() + 1;
@@ -54,7 +54,7 @@ export default function useDashboard() {
 
     const seekOpportunity = () => {
         setError('')
-        
+
         if (getRandomInteger(8, 10) != 10) {
             const percentOption = getRandomInteger(0, 100);
             const indiceAsset = getRandomInteger(0, 8);

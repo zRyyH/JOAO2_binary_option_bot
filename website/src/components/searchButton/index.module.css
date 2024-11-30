@@ -8,6 +8,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.25s;
+}
+
+.searchButton:hover {
+    background-color: #0e6322;
+}
+
+.searchButtonBlock {
+    width: 200px;
+    height: 50px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 10px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #999;
 }
 
 .searchButtonText {

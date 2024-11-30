@@ -7,6 +7,8 @@ const CountdownTimer = ({ initialTime, seekOpportunity }) => {
     const [isActive, setIsActive] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const search_time = Number.parseInt(process.env.REACT_APP_SEARCH_TIME)
+
     useEffect(() => {
         if (!isActive) return;
 
@@ -32,15 +34,14 @@ const CountdownTimer = ({ initialTime, seekOpportunity }) => {
         setTimeout(() => {
             setLoading(false);
             seekOpportunity()
-        }, 3000);
+        }, search_time * 1000);
     }
 
     return (
         <button
-            className={styles.searchButton}
+            className={isActive ? styles.searchButtonBlock : styles.searchButton}
             onClick={handleSeekOpportunity}
-            disabled={isActive}
-            style={{ backgroundColor: isActive ? "#999" : "#28a745" }}>
+            disabled={isActive}>
 
             <ClipLoader color="#fff" loading={loading} size={25} />
 
