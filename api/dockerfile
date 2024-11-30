@@ -7,8 +7,25 @@ WORKDIR /app
 # Copia os arquivos para o container
 COPY . /app
 
+# Configurar variáveis de ambiente durante o build
+ARG DATABASE_NAME
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
+ARG DATABASE_HOST
+ARG DATABASE_PORT
+
+# Criar o arquivo .env automaticamente
+RUN echo "DATABASE_NAME=${DATABASE_NAME}" >> .env && \
+    echo "DATABASE_USER=${DATABASE_USER}" >> .env && \
+    echo "DATABASE_PASSWORD=${DATABASE_PASSWORD}" >> .env && \
+    echo "DATABASE_HOST=${DATABASE_HOST}" >> .env && \
+    echo "DATABASE_PORT=${DATABASE_PORT}" >> .env
+
 # Instala o Apache
 RUN apt-get update
+
+# Atualiza o pip
+RUN pip install --upgrade pip
 
 # Instala as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt

@@ -2,6 +2,7 @@ from services import criar_event, obter_events, obter_event
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+
 app = Flask(__name__)
 CORS(app)
 
@@ -75,7 +76,7 @@ def event():
         return jsonify({"mensagem": response["result"]}), 200
     else:
         return jsonify({"mensagem": response["error"]}), 500
-
+    
 
 if __name__ == "__main__":
     app.run(debug=True, port=7000)

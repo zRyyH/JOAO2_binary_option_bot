@@ -1,0 +1,44 @@
+version: '3.8'
+
+
+services:
+  api:
+    container_name: binary_api
+    build:
+      context: ./api
+      args:
+        DATABASE_NAME: joao
+        DATABASE_USER: joao
+        DATABASE_PASSWORD: Raridadef750#
+        DATABASE_HOST: 154.38.180.78
+        DATABASE_PORT: 3306
+    network_mode: "host"
+    restart: always
+
+
+  zryyh:
+    container_name: website_zryyh
+    build:
+      context: ./website
+      args:
+        REACT_APP_API_URL: https://traderhook.awpsoft.com.br
+        REACT_APP_INFLUENCER: zRyyH
+        REACT_APP_BLOCK_TIME: 120
+        REACT_APP_SEARCH_TIME: 5
+    ports:
+      - "8081:80"
+    restart: always
+
+
+  joao:
+    container_name: website_joao
+    build:
+      context: ./website
+      args:
+        REACT_APP_API_URL: https://traderhook.awpsoft.com.br
+        REACT_APP_INFLUENCER: Joao
+        REACT_APP_BLOCK_TIME: 60
+        REACT_APP_SEARCH_TIME: 3
+    ports:
+      - "8082:80"
+    restart: always
