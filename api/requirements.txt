@@ -3,3 +3,4 @@ peewee
 python-dotenv
 pymysql
 gunicorn
+flask-cors

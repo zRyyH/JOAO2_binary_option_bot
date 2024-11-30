@@ -1,8 +1,9 @@
 from services import criar_event, obter_events, obter_event
 from flask import Flask, request, jsonify
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/pri_registro", methods=["GET"])
