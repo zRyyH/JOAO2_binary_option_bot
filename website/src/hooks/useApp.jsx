@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import AppContext from "../contexts/appContext";
 
 
 export default function useApp() {
-    const [isAuthenticated, setisAuthenticated] = useState(false);
-    
+    const { isAuthenticated } = useContext(AppContext);
     return { isAuthenticated }
 }

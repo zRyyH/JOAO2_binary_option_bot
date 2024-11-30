@@ -10,8 +10,9 @@ export async function loginService(url, path, trader_id, influencer) {
             }
         });
 
-        return response.data
-    } catch (e) {
-        console.log(e.message)
+        if (response.status == 200) return true
+
+    } catch {
+        return false
     }
 }
