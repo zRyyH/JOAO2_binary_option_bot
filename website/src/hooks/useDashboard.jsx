@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 
 export default function useDashboard() {
     const [period, setPeriod] = useState(1);
@@ -19,7 +18,7 @@ export default function useDashboard() {
         "AUD/CAD",
         "AUD/USD"
     ];
-    
+
     function getNextRoundedTime() {
         const now = new Date();
         let minutes = now.getMinutes() + 1;
@@ -49,13 +48,12 @@ export default function useDashboard() {
 
     const changePeriod = (event) => {
         setPeriod(event.target.value);
-        console.log("Selected period:", event.target.value);
     };
 
     const seekOpportunity = () => {
         setError('')
 
-        if (getRandomInteger(8, 10) != 10) {
+        if (getRandomInteger(0, 8) !== 8) {
             const percentOption = getRandomInteger(0, 100);
             const indiceAsset = getRandomInteger(0, 8);
 
@@ -77,7 +75,6 @@ export default function useDashboard() {
             setError('Nenhuma oportunidade encontrada, aguarde alguns minutos e tente novamente mais tarde.')
             return false;
         }
-
     };
 
     return {

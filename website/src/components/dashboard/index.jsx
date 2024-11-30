@@ -56,16 +56,16 @@ export default function Dashboard() {
 
             <div className={styles.predictContainer} >
                 <div className={styles.cetaContainer} >
-                    <img className={styles.cetaImg} src={cetaUp} />
-                    <p className={styles.cetaText} >
-                        {predict.down ? predict.down : "-"}
-                    </p>
-                </div>
-
-                <div className={styles.cetaContainer} >
-                    <img className={styles.cetaImg} src={cetaDown} />
+                    <img className={styles.cetaImg} src={cetaUp} alt="Seta para cima" />
                     <p className={styles.cetaText} >
                         {predict.up ? predict.up : "-"}
+                    </p>
+                </div>
+                
+                <div className={styles.cetaContainer} >
+                    <img className={styles.cetaImg} src={cetaDown} alt="Seta para baixo" />
+                    <p className={styles.cetaText} >
+                        {predict.down ? predict.down : "-"}
                     </p>
                 </div>
             </div>
