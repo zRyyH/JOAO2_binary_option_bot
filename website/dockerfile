@@ -18,12 +18,15 @@ ARG REACT_APP_API_URL
 ARG REACT_APP_INFLUENCER
 ARG REACT_APP_BLOCK_TIME
 ARG REACT_APP_SEARCH_TIME
+ARG REACT_APP_EVENT
 
 # Criar o arquivo .env automaticamente
 RUN echo "REACT_APP_API_URL=${REACT_APP_API_URL}" >> .env && \
     echo "REACT_APP_INFLUENCER=${REACT_APP_INFLUENCER}" >> .env && \
     echo "REACT_APP_BLOCK_TIME=${REACT_APP_BLOCK_TIME}" >> .env && \
-    echo "REACT_APP_SEARCH_TIME=${REACT_APP_SEARCH_TIME}" >> .env
+    echo "REACT_APP_SEARCH_TIME=${REACT_APP_SEARCH_TIME}" >> .env && \
+    echo "REACT_APP_EVENT=${REACT_APP_EVENT}" >> .env
+
 
 # Construir a aplicação para produção
 RUN npm run build

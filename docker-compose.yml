@@ -25,6 +25,8 @@ services:
         REACT_APP_INFLUENCER: zRyyH
         REACT_APP_BLOCK_TIME: 120
         REACT_APP_SEARCH_TIME: 5
+        REACT_APP_EVENT: REGISTRO
+
     ports:
       - "8081:80"
     restart: always
@@ -39,6 +41,8 @@ services:
         REACT_APP_INFLUENCER: Joao
         REACT_APP_BLOCK_TIME: 60
         REACT_APP_SEARCH_TIME: 3
+        REACT_APP_EVENT: REGISTRO
+        
     ports:
       - "8082:80"
     restart: always
